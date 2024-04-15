@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Recipe page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    /* Google Fonts Link  */
+    @import url('https://fonts.googleapis.com/css2?family=Young+Serif&display=swap');
+    /* font-family: "Young Serif", serif; */
+
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+    /* font-family: "Outfit", sans-serif; */
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary-Nutmeg: hsl(14, 45%, 36%);
+      --color-primary-Dark-Raspberry: hsl(332, 51%, 32%);
+
+      --color-neutral-White: rgb(255, 255, 255);
+      --color-neutral-Rose-White: rgb(255, 245, 250);
+      --color-neutral-Eggshell: rgb(243, 230, 216);
+      --color-neutral-Light-Grey: rgb(228, 222, 216);
+      --color-neutral-Wenge-Brown: rgb(95, 87, 78);
+      --color-neutral-Dark-Charcoal: rgb(48, 45, 44);
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: var(--color-neutral-Eggshell);
+      padding: 50px;
+    }
+
+    b {
+      color: var(--color-neutral-Wenge-Brown);
+    }
+
+    .recipe-card {
+      width: 50%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-neutral-White);
+      border-radius: 10px;
+      padding: 30px;
+    }
+
+    .recipe-card .recipe-img {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      padding: 0;
+    }
+
+    .recipe-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .recipe-card .recipe-header {
+      margin: 15px auto;
+      width: 100%;
+      height: auto;
+    }
+
+    .recipe-header h1 {
+      font-family: "Young Serif", serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .recipe-header p {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+    }
+
+    .recipe-card .recipe-prep {
+      margin: 15px auto;
+      width: 100%;
+      padding: 20px;
+      border-radius: 10px ;
+      background-color: var(--color-neutral-Rose-White);
+    }
+
+    .recipe-prep p {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--color-primary-Dark-Raspberry);
+    }
+
+    .recipe-prep ul {
+      margin-left: 20px;
+    }
+
+    .recipe-prep ul li {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+      color: var(--color-neutral-Dark-Charcoal);
+      margin-top: 10px;
+      padding-left: 10px;
+    }
+
+    .recipe-prep li::marker {
+      color: var(--color-primary-Dark-Raspberry);
+    }
+
+    .recipe-card .recipe-ingredients {
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--color-neutral-Light-Grey);
+    }
+
+    .recipe-ingredients h2 {
+      font-family: "Young Serif", serif;
+      font-size: 2rem;
+      color: var(--color-primary-Nutmeg);
+      margin-bottom: 20px;
+    }
+
+    .recipe-ingredients ul {}
+
+    .recipe-ingredients ul li {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+      color: var(--color-neutral-Dark-Charcoal);
+      margin-top: 10px;
+      margin-left: 22px;
+      padding-left: 10px;
+    }
+
+    .recipe-ingredients ul li::marker {
+      color: var(--color-primary-Nutmeg);
+    }
+
+    .recipe-card .recipe-instructions {
+      width: 100%;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--color-neutral-Light-Grey);
+    }
+
+    .recipe-card .recipe-instructions h2 {
+      font-family: "Young Serif", serif;
+      font-size: 2rem;
+      color: var(--color-primary-Nutmeg);
+      margin-bottom: 20px;
+    }
+
+
+    .recipe-instructions ol {}
+
+    .recipe-instructions ol li {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+      color: var(--color-neutral-Dark-Charcoal);
+      text-align: justify;
+      margin-top: 10px;
+      margin-left: 22px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .recipe-instructions ol li::marker {
+      color: var(--color-primary-Nutmeg);
+      font-weight: 600;
+    }
+
+    .recipe-card .recipe-nutrition {
+      padding-top: 30px;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      width: 100%;
+    }
+
+    .recipe-nutrition h2 {
+      font-family: "Young Serif", serif;
+      font-size: 2rem;
+      color: var(--color-primary-Nutmeg);
+    }
+
+    .recipe-nutrition p {
+      margin-top: 20px;
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+      color: var(--color-neutral-Dark-Charcoal);
+      text-align: left;
+    }
+
+    .recipe-nutrition table {
+      width: 100%;
+      padding: 20px;
+      border-collapse: separate;
+      border-spacing: 0 20px;
+    }
+
+    table tr {}
+
+    table tr th {
+      font-weight: 400 !important;
+      color: var(--color-neutral-Dark-Charcoal);
+    }
+
+    table tr td {
+      color: var(--color-primary-Nutmeg);
+      font-weight: 600;
+    }
+
+    table tr th,
+    td {
+      font-family: "Outfit", sans-serif;
+      font-size: 1.6rem;
+      text-align: left;
+      padding-bottom: 10px;
+      padding-left: 20px;
+      border-bottom: 1px solid var(--color-neutral-Light-Grey);
+    }
+
+    .attribution {
+      position: absolute;
+      top: 100%;
+      bottom: 0;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+
+
+    /* Responsive Website Design */
+    @media(max-width: 854px) and (min-width: 730px) {
+
+      .recipe-card {
+        width: 60%;
+      }
+    }
+
+    @media(max-width: 730px) and (min-width: 644px) {
+
+      .recipe-card {
+        width: 70%;
+      }
+    }
+
+    @media(max-width: 644px) and (min-width: 525px) {
+
+      .recipe-card {
+        width: 90%;
+      }
+    }
+
+    @media(max-width: 525px) {
+
+      .recipe-card {
+        width: 100%;
+      }
+
+      .recipe-header h1 {
+        font-family: "Young Serif", serif;
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+
+      .recipe-card .recipe-prep {
+        padding: 10px !important;
+      }
+
+      .recipe-card .recipe-prep {
+        margin-top: 0 !important;
+      }
+
+      .recipe-header p {
+        font-size: 1.1rem;
+      }
+
+      .recipe-prep p {
+        font-size: 1rem;
+      }
+
+      .recipe-nutrition p {
+        font-size: 0.98rem;
+      }
+
+      .recipe-prep ul li,
+      .recipe-ingredients ul li,
+      .recipe-instructions ol li {
+        font-size: 1rem;
+      }
+
+      .recipe-nutrition table {
+        padding: 10px;
+      }
+
+      table tr th,
+      td {
+        font-size: 1rem;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="recipe-card">
+
+    <div class="recipe-img">
+      <img src="./image-omelette.jpeg" alt="Recipe Image">
+    </div> <!-- recipe-img End-->
+
+    <div class="recipe-header">
+      <h1>Simple Omelette Recipe</h1>
+      <p>An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked
+        to perfection, optionally filled with your choice of cheese, vegetables, or meats.
+      </p>
+    </div> <!-- recipe-head End -->
+
+    <div class="recipe-prep">
+      <p>Preparation time</p>
+      <ul>
+        <li><b>Total</b>: Approximately 10 minutes</li>
+        <li><b>Preparation</b>: 5 minutes</li>
+        <li><b>Cooking</b>: 5 minutes</li>
+      </ul>
+    </div> <!-- recipe-prep End -->
+
+    <div class="recipe-ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+        <li>2-3 large eggs</li>
+        <li>Salt, to taste</li>
+        <li>Pepper, to taste</li>
+        <li>1 tablespoon of butter or oil</li>
+        <li>Optional fillings: cheese, diced vegetables, cooked meats, herbs</li>
+      </ul>
+    </div> <!-- recipe-ingredients End -->
+
+    <!-- <hr> -->
+
+    <div class="recipe-instructions">
+      <h2>Instructions</h2>
+      <ol>
+        <li>
+          <b>Beat the eggs</b>: In a bowl, beat the eggs with a pinch of salt and pepper until they are well
+          mixed.
+          You can add a tablespoon of water or milk for a fluffier texture.
+        </li>
+        <li>
+          <b>Heat the pan</b>: Place a non-stick frying pan over medium heat and add butter or oil.
+        </li>
+        <li>
+          <b>Cook the omelette</b>: Once the butter is melted and bubbling, pour in the eggs. Tilt the pan to
+          ensure
+          the eggs evenly coat the surface.
+        </li>
+        <li>
+          <b>Add fillings (optional)</b>: When the eggs begin to set at the edges but are still slightly runny
+          in
+          the
+          middle, sprinkle your chosen fillings over one half of the omelette.
+        </li>
+        <li>
+          <b>Fold and serve</b>: As the omelette continues to cook, carefully lift one edge and fold it over
+          the
+          fillings. Let it cook for another minute, then slide it onto a plate.
+        </li>
+        <li>
+          <b>Enjoy</b>: Serve hot, with additional salt and pepper if needed.
+
+        </li>
+      </ol>
+    </div> <!-- recipe-instructions End -->
+
+    <!-- <hr> -->
+
+    <div class="recipe-nutrition">
+      <h2>Nutrition</h2>
+      <p>
+        The table below shows nutritional values per serving without the additional fillings.
+      </p>
+
+      <table>
+        <tr>
+          <th>Calories</th>
+          <td>277kcal</td>
+        </tr>
+        <tr>
+          <th>Carbs</th>
+          <td>0g</td>
+        </tr>
+        <tr>
+          <th>Protein</th>
+          <td>20g</td>
+        </tr>
+        <tr>
+          <th>Fat</th>
+          <td>22g</td>
+        </tr>
+      </table>
+
+    </div> <!-- recipe-nutrition End -->
+
+  </div> <!-- recipe-card End -->
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Shiwani Kandpal</a>.
+  </div> <!-- attribution End -->
+
+</body>
+
+</html>
